@@ -8,17 +8,12 @@ repositories {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            groupId 'com.custle' // 设置项目的 Group ID
-            artifactId 'ksmkey' // 设置产物的 Artifact ID
-            version '3.0.0' // 设置产物的版本号
-
-            // from components.java
+        ksmkey(MavenPublication) {
+            artifact('libs/ksmkey-3.0.0.aar') {
+                groupId 'com.custle'
+                artifactId 'ksmkey'
+                version '3.0.0'
+            }
         }
     }
-}
-
-// 将 *.aar 文件作为构建产物发布到 Maven 仓库
-artifacts {
-    archives file('libs/ksmkey-3.0.0.aar')
 }
