@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    // namespace 'com.custle.ksmkey'
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    // implementation 'androidx.appcompat:appcompat:1.6.1'
+    // implementation 'com.google.android.material:material:1.9.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            // release(MavenPublication) {
+            //     from components.release
+            //     groupId = 'com.github.jitpack'
+            //     artifactId = 'android-example'
+            //     version = '1.0'
+            // }
+            ksmkey(MavenPublication) {
+                artifact('libs/ksmkey-3.0.0.aar') {
+                    groupId 'com.custle'
+                    artifactId 'ksmkey'
+                    version '3.0.0'
+                }
+            }
+        }
+    }
+}
+
+// publishing {
+//     publications {
+//         ksmkey(MavenPublication) {
+//             artifact('libs/ksmkey-3.0.0.aar') {
+//                 groupId 'com.custle'
+//                 artifactId 'ksmkey'
+//                 version '3.0.0'
+//             }
+//         }
+//     }
+// }

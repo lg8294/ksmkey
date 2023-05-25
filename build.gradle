@@ -1,19 +1,23 @@
-apply plugin:'maven-publish'
-
-repositories {
-    maven {
-        url 'https://jitpack.io'
+buildscript {
+    ext.kotlin_version = "1.6.10"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-publishing {
-    publications {
-        ksmkey(MavenPublication) {
-            artifact('libs/ksmkey-3.0.0.aar') {
-                groupId 'com.custle'
-                artifactId 'ksmkey'
-                version '3.0.0'
-            }
-        }
+allprojects {
+    repositories {
+        google()
+        maven { url "https://jitpack.io" }
+        mavenCentral()
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
